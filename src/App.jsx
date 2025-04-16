@@ -10,25 +10,25 @@ function App() {
       id: 1,
       title: 'somee',
       price: 348,
-      date: new Date(2025, 2, 23),
+      date: new Date(2023, 3, 4),
     },
     {
       id: 2,
       title: 'HOnber',
       price: 930.3,
-      date: new Date(2025, 2, 23),
+      date: new Date(2055, 6, 16),
     },
     {
       id: 3,
       title: 'mare',
       price: 23,
-      date: new Date(2025, 2, 23),
+      date: new Date(2030, 7, 23),
     },
     {
       id: 4,
       title: 'chdoo',
       price: 64.4,
-      date: new Date(2025, 2, 23),
+      date: new Date(2035, 9, 3),
     },
   ]
 
