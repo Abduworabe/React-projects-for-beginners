@@ -1,17 +1,20 @@
 import classExpCss from './ExpenseItem.module.css'
 const ExpenseItem = () => {
 
+    const expenseDate=new Date(2025, 3, 23);
+    const expensTitle='Car Insurance';
+    const expenseAmount=234.3;
     return <>
         <div className={classExpCss['expense-item']}>
             <div className={classExpCss['expense-itme-div1']}>
-               <div> March 28th 2025</div>
-                <h2 className={classExpCss['typeh2']}>Car_Insurance</h2>
+               <div> {expenseDate.getUTCDate()}</div>
+                <h2 className={classExpCss['typeh2']}>{expensTitle}</h2>
                 
             </div>
         
                 <div  className={classExpCss['price']}>
 
-                    &23.33
+                    &{expenseAmount}
                 </div>
             
         </div>
