@@ -1,13 +1,15 @@
+import Card from './Card';
 import ExpenseDate from './ExpenseDate';
 import classExpCss from './ExpenseItem.module.css'
 const ExpenseItem = (props) => {
 
     return <>
+    <Card>
         <div className={classExpCss['expense-item']}>
             <div className={classExpCss['expense-itme-div1']}>
                 <div>
 
-                    <ExpenseDate date={props.date} year={props.year} month={props.month} />
+                    <ExpenseDate date={props.date} />
 
                 </div>
                 <h2 className={classExpCss['typeh2']}>{props.tiltle}</h2>
@@ -20,6 +22,7 @@ const ExpenseItem = (props) => {
             </div>
 
         </div>
+        </Card>
 
     </>
 };
