@@ -3,7 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import ExpenseItem from './consposnents/Expense/ExpenseItem'
-
+import NewExpense from './consposnents/NewExpense/NewExpense'
 function App() {
   const datab = [
     {
@@ -30,16 +30,21 @@ function App() {
       price: 64.4,
       date: new Date(2035, 9, 3),
     },
-  ]
+  ];
 
   return (
     <>
-      <ExpenseItem tiltle={datab[0].title} price={datab[0].price} date={datab[0].date} />
-      <ExpenseItem tiltle={datab[1].title} price={datab[1].price} date={datab[1].date} />
-      <ExpenseItem tiltle={datab[2].title} price={datab[2].price} date={datab[2].date} />
-      <ExpenseItem tiltle={datab[3].title} price={datab[3].price} date={datab[3].date} />
+    <NewExpense/>
+      {datab.map(item => (
+        <ExpenseItem 
+          key={item.id} 
+          title={item.title} 
+          price={item.price} 
+          date={item.date} 
+        />
+      ))}
     </>
-  )
+  );
 }
 
-export default App
+export default App;
