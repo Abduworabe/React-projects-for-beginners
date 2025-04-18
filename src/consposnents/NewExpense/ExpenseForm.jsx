@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import classCssForme from './expenseForm.module.css'
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
     const [userInput, setUserInput] = useState({
         interdTilte: '',
         interdprice: '',
@@ -29,9 +29,10 @@ const ExpenseForm = () => {
     };
     const FormSubmitHandler = (event) => {
         event.preventDefault();
-        console.log(userInput)
 
-      
+
+        props.onSave(userInput);
+
         // Reset the form
         setUserInput({
             interdTilte: '',

@@ -31,10 +31,17 @@ function App() {
       date: new Date(2035, 9, 3),
     },
   ];
+  const finlDataHandler=(finilRicivedData)=>{
+    const finlData={
+      finilRicivedData,
+    }
+    console.log(finlData);
+
+  }
 
   return (
     <>
-    <NewExpense/>
+    <NewExpense onFinlDataPass={finlDataHandler}/>
       {datab.map(item => (
         <ExpenseItem 
           key={item.id} 
