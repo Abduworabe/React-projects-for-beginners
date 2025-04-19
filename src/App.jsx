@@ -61,6 +61,7 @@ function App() {
     <>
       <NewExpense onFinlDataPass={finlDataHandler} />
       <ExpensesFilter selected={filterdYear} onChageFilter={onChageFilterHandler} />
+      {filteredExpenses.length==0 && <p className="no-expense-message">No Expence Fined</p>}
       {filteredExpenses.map(item => (
         <ExpenseItem
           key={item.id} // Use the unique id as the key
