@@ -16,19 +16,19 @@ let initialData = [
     id: uuidv4(), // Add unique ID
     title: 'HOnber',
     price: 930.3,
-    date: new Date(2055, 6, 16),
+    date: new Date(2025, 6, 16),
   },
   {
     id: uuidv4(), // Add unique ID
     title: 'mare',
     price: 23,
-    date: new Date(2030, 7, 23),
+    date: new Date(2022, 7, 23),
   },
   {
     id: uuidv4(), // Add unique ID
     title: 'chdoo',
     price: 64.4,
-    date: new Date(2035, 9, 3),
+    date: new Date(2022, 9, 3),
   },
 ];
 
@@ -61,15 +61,18 @@ function App() {
     <>
       <NewExpense onFinlDataPass={finlDataHandler} />
       <ExpensesFilter selected={filterdYear} onChageFilter={onChageFilterHandler} />
-      {filteredExpenses.length==0 && <p className="no-expense-message">No Expence Fined</p>}
-      {filteredExpenses.map(item => (
-        <ExpenseItem
-          key={item.id} // Use the unique id as the key
-          title={item.title}
-          price={item.price}
-          date={item.date}
-        />
-      ))}
+      {filteredExpenses.length == 0 && <p className="no-expense-message">No Expence Fined</p>}
+      {filteredExpenses.length > 0 && 
+        filteredExpenses.map(item => (
+          <ExpenseItem
+            key={item.id} // Use the unique id as the key
+            title={item.title}
+            price={item.price}
+            date={item.date}
+          />
+        ))
+      }
+
     </>
   );
 }
