@@ -29,7 +29,7 @@ const ExpenseItem = (props) => {
 
                 <div className={classExpCss['price']}>
 
-                    &{props.price}
+                    ${props.price}
                 </div>
 
                 <button onClick={buttonClickHandler}>Chamge title</button>

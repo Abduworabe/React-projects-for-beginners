@@ -1,21 +1,17 @@
+
 import classCssNewExpens from './newExpense.module.css';
 import Card from '../UI/Card';
 import ExpenseForm from './ExpenseForm';
 
-const NewExpense = () => {
-const DataUpseveHandler=(resivedData)=>{
-
-    const  DataRicive={
-        resivedData
-       
-    }
-    console.log(DataRicive);
-
-};
+const NewExpense = (props) => {
+    const DataUpseveHandler = (resivedData) => {
+        props.onFinlDataPass(resivedData);
+console.log(resivedData +'from NewExpensce')
+    };
     return <>
         <Card>
             <div className={classCssNewExpens['contner']}>
-                <ExpenseForm onSave={DataUpseveHandler}/>
+                <ExpenseForm onSave={DataUpseveHandler} />
             </div>
         </Card>
     </>

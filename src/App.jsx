@@ -1,74 +1,67 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import ExpenseItem from './consposnents/Expense/ExpenseItem'
-import NewExpense from './consposnents/NewExpense/NewExpense'
-import ExpensesFilter from '../src/consposnents/Expense/ExpensesFilter'
+import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid'; // Import the UUID library
+import './App.css';
+import ExpenseItem from './consposnents/Expense/ExpenseItem';
+import NewExpense from './consposnents/NewExpense/NewExpense';
+import ExpensesFilter from '../src/consposnents/Expense/ExpensesFilter';
+
+let initialData = [
+  {
+    id: uuidv4(), // Add unique ID
+    title: 'somee',
+    price: 348,
+    date: new Date(2023, 3, 4),
+  },
+  {
+    id: uuidv4(), // Add unique ID
+    title: 'HOnber',
+    price: 930.3,
+    date: new Date(2055, 6, 16),
+  },
+  {
+    id: uuidv4(), // Add unique ID
+    title: 'mare',
+    price: 23,
+    date: new Date(2030, 7, 23),
+  },
+  {
+    id: uuidv4(), // Add unique ID
+    title: 'chdoo',
+    price: 64.4,
+    date: new Date(2035, 9, 3),
+  },
+];
 
 function App() {
-  const intialData = [
-    {
-      id: 1,
-      title: 'somee',
-      price: 348,
-      date: new Date(2023, 3, 4),
-    },
-    {
-      id: 2,
-      title: 'HOnber',
-      price: 930.3,
-      date: new Date(2055, 6, 16),
-    },
-    {
-      id: 3,
-      title: 'mare',
-      price: 23,
-      date: new Date(2030, 7, 23),
-    },
-    {
-      id: 4,
-      title: 'chdoo',
-      price: 64.4,
-      date: new Date(2035, 9, 3),
-    },
-  ];
- const [datab, setDatab]=useState(intialData);
+  const [datab, setDatab] = useState(initialData);
 
- const finlDataHandler = (finilReceivedData) => {
-  // Assuming finilReceivedData contains the necessary fields
-  const { title, price, date } = finilReceivedData;
+  const finlDataHandler = (finilReceivedData) => {
+    const newExpense = {
+      id: uuidv4(), // Generate a new ID for the new expense
+      title: finilReceivedData.title,
+      price: +finilReceivedData.price, // Convert price to a number
+      date: new Date(finilReceivedData.date), // Convert date string to Date object
+    };
 
-  // Create a new expense object
-  const newExpense = {
-    id: Math.random(), // Generate a unique ID
-    title: title,
-    price: parseFloat(price), // Convert price to a number
-    date: new Date(date), // Convert date to a Date object
+    // Update the state with the new expense
+    setDatab((prevData) => [...prevData, newExpense]);
   };
 
-  // Update the state with the new expense
-  setDatab((prevData) => [
-    ...prevData,
-    newExpense, // Add the new expense to the existing array
-  ]);
-};
-  const [filterdYear, setfilterdYear] =useState('2022')
-  const onChageFilterHandler=(SelctedYear)=>{
-      setfilterdYear(SelctedYear);
-  }
+  const [filterdYear, setfilterdYear] = useState('2022');
+  const onChageFilterHandler = (SelctedYear) => {
+    setfilterdYear(SelctedYear);
+  };
 
   return (
     <>
-
-    <NewExpense onFinlDataPass={finlDataHandler}/>
-    <ExpensesFilter selected={filterdYear} onChageFilter={onChageFilterHandler}/>
+      <NewExpense onFinlDataPass={finlDataHandler} />
+      <ExpensesFilter selected={filterdYear} onChageFilter={onChageFilterHandler} />
       {datab.map(item => (
-        <ExpenseItem 
-          key={item.id} 
-          title={item.title} 
-          price={item.price} 
-          date={item.date} 
+        <ExpenseItem
+          key={item.id} // Use the unique id as the key
+          title={item.title}
+          price={item.price}
+          date={item.date}
         />
       ))}
     </>
