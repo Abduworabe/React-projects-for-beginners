@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Card from '../UI/Card';
 import ExpenseDate from './ExpenseDate';
 import classExpCss from './ExpenseItem.module.css'
+
 const ExpenseItem = (props) => {
 
     
@@ -11,8 +12,10 @@ const ExpenseItem = (props) => {
         setTitle('Updated')
 
     };
+  
     return <>
         <Card>
+            
             <div className={classExpCss['expense-item']}>
                 <div className={classExpCss['expense-itme-div1']}>
                     <div>

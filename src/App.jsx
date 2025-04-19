@@ -4,8 +4,10 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import ExpenseItem from './consposnents/Expense/ExpenseItem'
 import NewExpense from './consposnents/NewExpense/NewExpense'
+import ExpensesFilter from '../src/consposnents/Expense/ExpensesFilter'
+
 function App() {
-  const datab = [
+  const intialData = [
     {
       id: 1,
       title: 'somee',
@@ -31,17 +33,36 @@ function App() {
       date: new Date(2035, 9, 3),
     },
   ];
-  const finlDataHandler=(finilRicivedData)=>{
-    const finlData={
-      finilRicivedData,
-    }
-    console.log(finlData);
+ const [datab, setDatab]=useState(intialData);
 
+ const finlDataHandler = (finilReceivedData) => {
+  // Assuming finilReceivedData contains the necessary fields
+  const { title, price, date } = finilReceivedData;
+
+  // Create a new expense object
+  const newExpense = {
+    id: Math.random(), // Generate a unique ID
+    title: title,
+    price: parseFloat(price), // Convert price to a number
+    date: new Date(date), // Convert date to a Date object
+  };
+
+  // Update the state with the new expense
+  setDatab((prevData) => [
+    ...prevData,
+    newExpense, // Add the new expense to the existing array
+  ]);
+};
+  const [filterdYear, setfilterdYear] =useState('2022')
+  const onChageFilterHandler=(SelctedYear)=>{
+      setfilterdYear(SelctedYear);
   }
 
   return (
     <>
+
     <NewExpense onFinlDataPass={finlDataHandler}/>
+    <ExpensesFilter selected={filterdYear} onChageFilter={onChageFilterHandler}/>
       {datab.map(item => (
         <ExpenseItem 
           key={item.id} 

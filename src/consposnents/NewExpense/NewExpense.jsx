@@ -2,14 +2,14 @@ import classCssNewExpens from './newExpense.module.css';
 import Card from '../UI/Card';
 import ExpenseForm from './ExpenseForm';
 
-const NewExpense = (props) => {
+const NewExpense = () => {
 const DataUpseveHandler=(resivedData)=>{
 
     const  DataRicive={
-        ...resivedData,
-        id:Math.random(),
+        resivedData
+       
     }
-  props.onFinlDataPass(DataRicive);
+    console.log(DataRicive);
 
 };
     return <>
