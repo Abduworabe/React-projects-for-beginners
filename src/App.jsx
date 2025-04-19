@@ -10,7 +10,7 @@ let initialData = [
     id: uuidv4(), // Add unique ID
     title: 'somee',
     price: 348,
-    date: new Date(2023, 3, 4),
+    date: new Date(2025, 3, 4),
   },
   {
     id: uuidv4(), // Add unique ID
@@ -34,6 +34,7 @@ let initialData = [
 
 function App() {
   const [datab, setDatab] = useState(initialData);
+  const [filterdYear, setfilterdYear] = useState('2022');
 
   const finlDataHandler = (finilReceivedData) => {
     const newExpense = {
@@ -47,16 +48,20 @@ function App() {
     setDatab((prevData) => [...prevData, newExpense]);
   };
 
-  const [filterdYear, setfilterdYear] = useState('2022');
   const onChageFilterHandler = (SelctedYear) => {
     setfilterdYear(SelctedYear);
   };
+
+  // Filter expenses based on the selected year
+  const filteredExpenses = datab.filter(expense => {
+    return expense.date.getFullYear().toString() === filterdYear;
+  });
 
   return (
     <>
       <NewExpense onFinlDataPass={finlDataHandler} />
       <ExpensesFilter selected={filterdYear} onChageFilter={onChageFilterHandler} />
-      {datab.map(item => (
+      {filteredExpenses.map(item => (
         <ExpenseItem
           key={item.id} // Use the unique id as the key
           title={item.title}

@@ -24,10 +24,19 @@ const ExpenseForm = (props) => {
 
     const InputDateHandler = (event) => {
         const dateString = event.target.value; // e.g., "2023-04-04"
-        setUserInput((previousState) => ({
-            ...previousState,
-            date: dateString, // Store the date as a string
-        }));
+        const selectedDate = new Date(dateString);
+        const startDate = new Date(2022, 0, 1); // January 1, 2022
+        const endDate = new Date(2025, 11, 31); // December 31, 2025
+
+        // Check if the selected date is within the range
+        if (selectedDate >= startDate && selectedDate <= endDate) {
+            setUserInput((previousState) => ({
+                ...previousState,
+                date: dateString, // Store the date as a string
+            }));
+        } else {
+            alert('Please select a date between 2022-01-01 and 2025-12-31.');
+        }
     };
 
     const FormSubmitHandler = (event) => {

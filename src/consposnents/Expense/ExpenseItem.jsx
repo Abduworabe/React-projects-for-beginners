@@ -8,10 +8,7 @@ const ExpenseItem = (props) => {
     
    const [title ,setTitle]= useState(props.title);
 
-    const buttonClickHandler = () => {
-        setTitle('Updated')
 
-    };
   
     return <>
         <Card>
@@ -32,7 +29,7 @@ const ExpenseItem = (props) => {
                     ${props.price}
                 </div>
 
-                <button onClick={buttonClickHandler}>Chamge title</button>
+           
             </div>
 
         </Card>
